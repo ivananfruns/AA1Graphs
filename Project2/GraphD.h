@@ -11,7 +11,7 @@ struct node{
 class GraphD
 {
 	
-	std::map<int,std::list<int>> nodeMap;
+	std::vector<node> nodeVector;
 public:
 	GraphD();
 	GraphD(std::vector<std::pair<int,int>> myArcs);
