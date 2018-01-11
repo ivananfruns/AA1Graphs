@@ -13,11 +13,16 @@ struct node{
 class GraphD
 {
 private:
+	bool foundAPath = false;
 	
 public:
 	GraphD();
-	GraphD(std::vector<std::pair<int,int>> myArcs);
+	GraphD(std::vector<std::pair<int,int>>);
 	~GraphD();
 	std::vector<node> nodeVector;
 	void Insert(std::pair<int, int>);
+	void Eliminate(std::pair<int, int>);
+	int getIndex(node);
+	bool arc(node, node);
+	bool path(node, node);
 };
