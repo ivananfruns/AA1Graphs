@@ -9,62 +9,62 @@ GraphD::GraphD()
 GraphD::GraphD(std::vector<std::pair<int, int>> myArcs)
 {
 
-for (int i = 0; i < myArcs.size(); i++)
-{
-	node firstNode, secondNode;
-	firstNode.info = myArcs[i].first;
-	secondNode.info = myArcs[i].second;
-	bool firstFound = false;
-	bool secondFound = false;
-	for (int j = 0; j < nodeVector.size(); j++)
+	for (int i = 0; i < myArcs.size(); i++)
 	{
-		if (!firstFound && nodeVector[j].info == firstNode.info)
+		node firstNode, secondNode;
+		firstNode.info = myArcs[i].first;
+		secondNode.info = myArcs[i].second;
+		bool firstFound = false;
+		bool secondFound = false;
+		for (int j = 0; j < nodeVector.size(); j++)
 		{
-			firstFound = true;
-		}
-		//també hem d'inserir els nodes que no connecten amb cap altre node:
-		if (!secondFound && nodeVector[j].info == secondNode.info)
-		{
-			secondFound = true;
-		}
-	}
-	//inserim els nodes primers:
-	if (!firstFound)
-	{
-		nodeVector.push_back(firstNode);
-	}
-	if (!secondFound)
-	{
-		nodeVector.push_back(secondNode);
-	}
-}
-
-
-for (int i = 0; i < myArcs.size(); i++)
-{
-	int firstNode, secondNode;
-	firstNode = myArcs[i].first;
-	secondNode = myArcs[i].second;
-	for (int j = 0; j < nodeVector.size(); j++)
-	{
-		if (nodeVector[j].info == firstNode)
-		{
-			bool found = false;
-			for (std::list<int>::iterator it = nodeVector[j].adyacencias.begin(); it != nodeVector[j].adyacencias.end(); it++)
+			if (!firstFound && nodeVector[j].info == firstNode.info)
 			{
-				if (*it == secondNode)
+				firstFound = true;
+			}
+			//també hem d'inserir els nodes que no connecten amb cap altre node:
+			if (!secondFound && nodeVector[j].info == secondNode.info)
+			{
+				secondFound = true;
+			}
+		}
+		//inserim els nodes primers:
+		if (!firstFound)
+		{
+			nodeVector.push_back(firstNode);
+		}
+		if (!secondFound)
+		{
+			nodeVector.push_back(secondNode);
+		}
+	}
+
+
+	for (int i = 0; i < myArcs.size(); i++)
+	{
+		int firstNode, secondNode;
+		firstNode = myArcs[i].first;
+		secondNode = myArcs[i].second;
+		for (int j = 0; j < nodeVector.size(); j++)
+		{
+			if (nodeVector[j].info == firstNode)
+			{
+				bool found = false;
+				for (std::list<int>::iterator it = nodeVector[j].adyacencias.begin(); it != nodeVector[j].adyacencias.end(); it++)
 				{
-					found = true;
+					if (*it == secondNode)
+					{
+						found = true;
+					}
+				}
+				if (!found)
+				{
+					nodeVector[j].adyacencias.push_back(secondNode);
 				}
 			}
-			if (!found)
-			{
-				nodeVector[j].adyacencias.push_back(secondNode);
-			}
-		}
 
+		}
 	}
-}
 }
 
 

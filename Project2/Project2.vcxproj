@@ -112,10 +112,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GraphD.cpp" />
+    <ClCompile Include="GraphDMap.cpp" />
+    <ClCompile Include="GraphDMatriu.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphD.h" />
+    <ClInclude Include="GraphDMap.h" />
+    <ClInclude Include="GraphDMatriu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
