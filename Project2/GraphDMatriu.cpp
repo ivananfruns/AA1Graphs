@@ -1,6 +1,7 @@
 #include "GraphDMatriu.h"
 
-
+/*
+//Constructor utilitzant matrius:
 GraphDMatriu::GraphDMatriu(std::vector<std::pair<int, int>> myArcs):nodes{0}
 {
 	//creem una llista teporal per poder comptar el nombre de nodes, ja tinguin arestes o sense.
@@ -32,9 +33,17 @@ GraphDMatriu::GraphDMatriu(std::vector<std::pair<int, int>> myArcs):nodes{0}
 	{
 		for (int j = 0; j < nodes; j++)
 		{
-			if ()
+			bool found=false;
+			//recorrem el vector buscant el parell i,j:
+			for (const std::pair<int, int> &e : myArcs)
 			{
-				//si el vector té i -> j
+				if (e.first == i && e.second == j)
+				{
+					found = true;
+				}
+			}
+			if (found)
+			{
 				md[i][j] = true;
 			}
 			else
@@ -53,3 +62,41 @@ GraphDMatriu::~GraphDMatriu()
 		delete[]md;
 	}
 }
+*/
+
+GraphDMatriu::GraphDMatriu(std::vector<std::pair<int, int>> myArcs)
+{
+	for (auto &pair : myArcs)
+	{
+		matrix[pair] = true;
+	}
+}
+
+GraphDMatriu::~GraphDMatriu()
+{
+}
+
+void GraphDMatriu::Insert(std::pair<int, int>arc)
+{
+	matrix[arc] = true;
+}
+
+void GraphDMatriu::Eliminate(std::pair<int, int>arc)
+{
+	matrix[arc] = false;
+}
+
+int GraphDMatriu::getIndex(int n)
+{
+	int count = 0;
+	for (std::map<std::pair<int, int>,bool>::iterator it = matrix.begin(); it != matrix.end(); it++)
+	{
+		if (it->first.first == n)
+		{
+			count++;
+		}
+	}
+	return count;
+}
+
+
