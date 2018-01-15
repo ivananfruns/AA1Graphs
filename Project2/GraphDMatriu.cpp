@@ -99,4 +99,11 @@ int GraphDMatriu::getIndex(int n)
 	return count;
 }
 
+bool GraphDMatriu::path(int n1, int n2)
+{
+
+}
+
+
+
 

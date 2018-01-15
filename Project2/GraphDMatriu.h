@@ -15,5 +15,6 @@ public:
 	void Insert(std::pair<int, int>);
 	void Eliminate(std::pair<int, int>);
 	int getIndex(int);
+	bool path(int, int);
 };
 
